@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "npmClient": "pnpm",
+  "useWorkspaces": true,
+  "command": {
+    "version": {
+      "conventionalCommits": true
+    },
+    "publish": {
+      "ignoreChanges": [
+        "ignored-file"
+      ]
+    }
+  },
+  "packages": [
+    "packages/*"
+  ]
+}

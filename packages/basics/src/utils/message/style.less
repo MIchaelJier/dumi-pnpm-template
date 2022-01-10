@@ -1,0 +1,156 @@
+@message-notice-content-padding: 10px 16px;
+@message-notice-content-bg: #fff;
+@dzg-common-utils-prefix: 'dzg-common-utils';
+@zindex-message: 1010;
+@border-radius-base: 2px;
+@shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+  0 9px 28px 8px rgba(0, 0, 0, 0.05);
+@success-color: #52c41a;
+@error-color: rgb(255, 77, 79);
+@warning-color: rgb(250, 173, 20);
+@info-color: rgb(24, 144, 255);
+@font-size-lg: 16px;
+@icon-color: inherit;
+
+@text-color: rgba(0, 0, 0, 0.65);
+@font-size-base: 14px;
+@font-variant-base: tabular-nums;
+@line-height-base: 1.5715;
+@font-feature-settings-base: 'tnum';
+
+@dzg-common-utils-message-prefix-cls: ~'@{dzg-common-utils-prefix}-message';
+@dzg-iconfont-css-prefix: dzg-anticon;
+
+.reset-component() {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: @text-color;
+  font-size: @font-size-base;
+  font-variant: @font-variant-base;
+  line-height: @line-height-base;
+  list-style: none;
+  font-feature-settings: @font-feature-settings-base;
+}
+
+.@{dzg-common-utils-message-prefix-cls} {
+  .reset-component;
+
+  position: fixed;
+  top: 16px;
+  left: 0;
+  z-index: @zindex-message;
+  width: 100%;
+  pointer-events: none;
+
+  &-notice {
+    padding: 8px;
+    text-align: center;
+    &:first-child {
+      margin-top: -8px;
+    }
+  }
+
+  &-notice-content {
+    display: inline-block;
+    padding: @message-notice-content-padding;
+    background: @message-notice-content-bg;
+    border-radius: @border-radius-base;
+    box-shadow: @shadow-2;
+    pointer-events: all;
+  }
+
+  &-success .@{dzg-iconfont-css-prefix} {
+    color: @success-color;
+  }
+
+  &-error .@{dzg-iconfont-css-prefix} {
+    color: @error-color;
+  }
+
+  &-warning .@{dzg-iconfont-css-prefix} {
+    color: @warning-color;
+  }
+
+  &-info .@{dzg-iconfont-css-prefix},
+  &-loading .@{dzg-iconfont-css-prefix} {
+    color: @info-color;
+  }
+
+  .@{dzg-iconfont-css-prefix} {
+    position: relative;
+    top: 1px;
+    margin-right: 8px;
+    font-size: @font-size-lg;
+  }
+
+  &-notice.move-up-leave.move-up-leave-active {
+    animation-name: MessageMoveOut;
+    animation-duration: 0.3s;
+  }
+}
+
+@keyframes MessageMoveOut {
+  0% {
+    max-height: 150px;
+    padding: 8px;
+    opacity: 1;
+  }
+  100% {
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+  }
+}
+
+.iconfont-mixin() {
+  display: inline-block;
+  color: @icon-color;
+  font-style: normal;
+  line-height: 0;
+  text-align: center;
+  text-transform: none;
+  vertical-align: -0.125em; // for SVG icon, see https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  > * {
+    line-height: 1;
+  }
+
+  svg {
+    display: inline-block;
+  }
+
+  &::before {
+    display: none; // dont display old icon.
+  }
+
+  & &-icon {
+    display: block;
+  }
+}
+
+.@{dzg-iconfont-css-prefix} {
+  .iconfont-mixin();
+
+  &[tabindex] {
+    cursor: pointer;
+  }
+}
+
+.@{dzg-iconfont-css-prefix}-spin::before {
+  display: inline-block;
+  animation: loadingCircle 1s infinite linear;
+}
+.@{dzg-iconfont-css-prefix}-spin {
+  display: inline-block;
+  animation: loadingCircle 1s infinite linear;
+}
+
+@keyframes loadingCircle {
+  100% {
+    transform: rotate(360deg);
+  }
+}
