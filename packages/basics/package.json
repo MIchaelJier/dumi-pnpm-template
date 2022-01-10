@@ -1,10 +1,10 @@
 {
-  "name": "@dumi-pnpm-template/basics", 
-  "version": "0.1.0",
+  "name": "@dumi-pnpm-template/basics",
+  "version": "0.1.1",
   "author": "MichaelJier <chem908430737@icloud.com>",
   "private": false,
   "license": "MIT",
-  "main": "dist/index.ts", 
+  "main": "dist/index.ts",
   "peerDependencies": {
     "@formily/antd": "^2.0.0-rc.11",
     "@formily/core": "^2.0.0-rc.11",
