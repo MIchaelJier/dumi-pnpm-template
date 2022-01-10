@@ -1,6 +1,5 @@
 {
-  "name": "dumi-pnpm-template",
-  "version": "0.1.0",
+  "name": "dumi-pnpm-template", 
   "description": "",
   "main": "dist/index.ts",
   "module": "src/index.ts",
@@ -11,7 +10,11 @@
   "scripts": {
     "release": "lerna version",
     "release:minor": "lerna version minor",
+    "release:minor:beta": "lerna version preminor --conventional-prerelease",
+    "release:minor:stable": "lerna version minor --conventional-graduate", 
     "release:patch": "lerna version patch",
+    "release:patch:beta": "lerna version prepatch --conventional-prerelease",
+    "release:patch:stable": "lerna version patch --conventional-graduate",
     "commit": "git-cz",
     "prepare": "husky install",
     "lerna:bs": "lerna bootstrap", 
