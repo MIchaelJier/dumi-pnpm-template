@@ -1,6 +1,6 @@
 {
   "name": "@dumi-pnpm-template/basics",
-  "version": "0.1.1",
+  "version": "0.1.2-alpha.0",
   "author": "MichaelJier <chem908430737@icloud.com>",
   "private": false,
   "license": "MIT",
