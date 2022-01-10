@@ -1,7 +1,7 @@
 ---
 nav:
   title: TextArea
-  path: /components
+  path: /basics
   order: 1
 ---
 

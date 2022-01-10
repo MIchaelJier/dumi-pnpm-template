@@ -1,7 +1,7 @@
 ---
 nav:
   title: 业务组件
-  path: /business-component
+  path: /business
   order: 1
 ---
 

@@ -1,7 +1,7 @@
 ---
 nav:
   title: Foo
-  path: /components
+  path: /business
   order: 2
 ---
 
@@ -11,7 +11,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from '@dumi-pnpm-template/basics';
+import { Foo } from '@dumi-pnpm-template/business';
 
 export default () => <Foo title="First Demo" />;
 ```
