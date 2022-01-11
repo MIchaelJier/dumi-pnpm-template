@@ -8,18 +8,22 @@
     "packages/*"
   ],
   "scripts": {
-    "release": "lerna version",
-    "release:minor": "lerna version minor",
-    "release:minor:beta": "lerna version preminor --conventional-prerelease",
-    "release:minor:stable": "lerna version minor --conventional-graduate", 
-    "release:patch": "lerna version patch",
-    "release:patch:beta": "lerna version prepatch --conventional-prerelease",
-    "release:patch:stable": "lerna version patch --conventional-graduate",
+    "release": "lerna publish --conventional-commits",
+    "release:beta": "lerna publish --conventional-commits --canary --preid beta",
+    "lv": "lerna version",
+    "lv:minor": "lerna version minor",
+    "lv:minor:beta": "lerna version preminor",
+    "lv:minor:change-alpha": "lerna version preminor --conventional-prerelease",
+    "lv:minor:change-stable": "lerna version minor --conventional-graduate", 
+    "lv:patch": "lerna version patch",
+    "lv:patch:alpha": "lerna version prepatch",
+    "lv:patch:change-alpha": "lerna version prepatch --conventional-prerelease",
+    "lv:patch:change-stable": "lerna version patch --conventional-graduate", 
+    "lv:alpha": "lerna version prerelease", 
     "commit": "git-cz",
     "prepare": "husky install",
     "lerna:bs": "lerna bootstrap", 
     "lerna:clean": "lerna clean", 
-    "lerna:pub": "lerna publish",
     "lerna:list": "lerna list",
     "start": "dumi dev",
     "docs:build": "dumi build",
@@ -35,22 +39,17 @@
     "dist"
   ],
   "typings": "dist/index.d.ts",
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "cz-customizable": {
+    "config": ".cz-config.js"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -e $GIT_PARAMS"
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS" 
     }
   },
-  "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
-      "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "prettier --parser=typescript --write"
-    ]
+  "lint-staged": { 
+    "*.{js,jsx,tsx,ts}": "yarn prettier" 
   },
   "peerDependencies": {
     "@formily/antd": "^2.0.0-rc.11",
@@ -78,10 +77,10 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "commitizen": "^4.2.4",
-    "commitlint-config-cz": "^0.13.2", 
+    "commitlint-config-cz": "^0.13.3", 
     "cz-customizable": "^6.3.0",
     "cz-lerna-changelog": "^2.0.3",
-    "husky": "^6.0.0",
+    "husky": "^7.0.4",
     "standard": "^16.0.3",
     "standard-version": "^9.3.0",
     "validate-commit-msg": "^2.14.0",
